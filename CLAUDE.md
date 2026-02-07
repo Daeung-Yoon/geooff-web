@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Purpose
 
-지표 투과 레이더(GPR) AI 분석 소프트웨어 **GeoOff** 홍보용 랜딩 페이지.
+지표 투과 레이더(GPR) AI 분석 소프트웨어 **Geooff** 홍보용 랜딩 페이지.
 
 ## Commands
 
@@ -16,28 +16,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Tech Stack
 
 - **Next.js 16** (App Router, TypeScript)
-- **Tailwind CSS v4** — Uses `@theme inline` directive in `globals.css` for custom design tokens (not `tailwind.config.js`)
-- **Fonts**: Syne (display/headings via `--font-display`), Geist Sans (body via `--font-body`), Geist Mono (code via `--font-mono`)
+- **Tailwind CSS v4** — Uses `@theme inline` directive in `globals.css` for semantic color tokens
+- **Fonts**: Inter (body/sans via `--font-sans`), Space Grotesk (display/headings via `--font-display`)
+- **Icons**: lucide-react
 
 ## Architecture
 
 - `src/app/` — Next.js App Router pages and layouts
-  - `globals.css` — Tailwind theme tokens (navy/mint color palette), keyframe animations, utility classes (`.glass`, `.glass-card`, `.mint-glow`, `.bg-grid-pattern`)
-  - `layout.tsx` — Root layout with font loading and metadata
-  - `page.tsx` — Single-page landing with sections: Navbar, Hero, Features, Workflow, CTA/Contact, Footer
-- `src/components/` — Reusable components
-  - `RadarVisual.tsx` — Animated SVG radar visualization (client component)
+  - `globals.css` — Tailwind v4 theme tokens (semantic color system: background, foreground, card, primary, secondary, muted, border)
+  - `layout.tsx` — Root layout with Inter + Space Grotesk font loading and metadata
+  - `page.tsx` — Multi-section landing page assembling all geocoff components
+- `src/components/geocoff/` — Page section components
+  - `logo.tsx` — SVG logo ("Ge" + two overlapping circles "oo" + "ff") and icon
+  - `navbar.tsx` — Fixed top navbar with mobile menu (client component)
+  - `hero.tsx` — Hero section with text content + strata visual (client component)
+  - `strata-visual.tsx` — Canvas-based animated geological strata layers (client component)
+  - `features.tsx` — 6-card feature grid with lucide icons
+  - `stats.tsx` — 4-column stats bar
+  - `solutions.tsx` — Tabbed solutions section (client component)
+  - `cta.tsx` — Call-to-action section
+  - `footer.tsx` — Footer with link groups
 
 ## Design System
 
-Color palette defined as Tailwind theme tokens:
-- **Navy**: `navy-950` (#040810) through `navy-500` (#1a3d5c) — backgrounds and surfaces
-- **Mint**: `mint-600` (#009e7e) through `mint-300` (#4dffd2) — accent color
-- Primary dark background: `navy-900` (#070d1a)
-- Primary accent: `mint-500` (#00d4aa)
+Semantic color tokens defined via Tailwind v4 `@theme inline`:
+- **background**: `hsl(220 30% 7%)` — page background (dark navy)
+- **foreground**: `hsl(210 20% 92%)` — primary text
+- **card**: `hsl(220 28% 10%)` — card surfaces
+- **primary**: `hsl(174 62% 55%)` — teal accent
+- **secondary**: `hsl(220 20% 14%)` — secondary surfaces
+- **muted-foreground**: `hsl(215 15% 55%)` — muted text
+- **border**: `hsl(220 20% 18%)` — border color
 
-All custom animations are CSS-only (no JS animation libraries). Glass morphism effects use `backdrop-filter: blur()`.
+Usage: `bg-background`, `text-foreground`, `bg-card`, `text-primary`, `text-muted-foreground`, `border-border`, etc.
 
 ## Language
 
-UI copy is in Korean (한국어). `<html lang="ko">`.
+UI copy is in English. `<html lang="en">`.
