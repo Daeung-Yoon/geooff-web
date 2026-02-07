@@ -1,15 +1,6 @@
 export function GeooffLogo({
   className = "h-14 w-auto",
 }: { className?: string }) {
-  // Geometric G — narrow elliptical arc + horizontal bar only (no vertical bar)
-  const gcx = 21, gcy = 42, grx = 15, gry = 21, gsw = 8.5;
-  const gapDeg = 50;
-  const gsx = Math.round((gcx + grx * Math.cos(gapDeg * Math.PI / 180)) * 10) / 10;
-  const gsy = Math.round((gcy - gry * Math.sin(gapDeg * Math.PI / 180)) * 10) / 10;
-  const gex = gcx + grx; // right-middle end
-  const gbar = gcx + 5;  // horizontal bar inward to center+5
-  const gArc = `M ${gsx} ${gsy} A ${grx} ${gry} 0 1 0 ${gex} ${gcy} H ${gbar}`;
-
   // OO slightly larger for visual emphasis
   const lcx = 92, rcx = 116, cy = 46, r = 16, sw = 5;
   const font = "'Space Grotesk', 'Montserrat', system-ui, sans-serif";
@@ -85,30 +76,29 @@ export function GeooffLogo({
         <clipPath id="cR"><circle cx={rcx} cy={cy} r={r - sw / 2 - 0.5} /></clipPath>
       </defs>
 
-      {/* ==================== "G" — Narrow elliptical arc + bar ==================== */}
+      {/* ==================== "G" — Matte Midnight Navy ==================== */}
       {/* Depth extrusion */}
       {[4, 3, 2, 1].map((i) => (
-        <g key={`G${i}`} transform={`translate(${i * 0.7},${i * 0.8})`}>
-          <path d={gArc} stroke={`rgba(8,14,26,${0.3 + i * 0.1})`}
-            strokeWidth={gsw} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </g>
+        <text key={`G${i}`} x={-1 + i * 0.7} y={64 + i * 0.8}
+          fontFamily={font} fontWeight="700" fontSize="64"
+          fill={`rgba(8,14,26,${0.3 + i * 0.1})`}>G</text>
       ))}
       {/* Main fill with drop shadow */}
-      <path d={gArc} stroke="url(#geMain)" strokeWidth={gsw}
-        fill="none" strokeLinecap="round" strokeLinejoin="round" filter="url(#dropShadow)" />
+      <text x="-1" y="64" fontFamily={font}
+        fontWeight="700" fontSize="64" fill="url(#geMain)" filter="url(#dropShadow)">G</text>
       {/* Inner shadow for matte depth */}
-      <path d={gArc} stroke="url(#geMain)" strokeWidth={gsw}
-        fill="none" strokeLinecap="round" strokeLinejoin="round" filter="url(#geInner)" />
+      <text x="-1" y="64" fontFamily={font}
+        fontWeight="700" fontSize="64" fill="url(#geMain)" filter="url(#geInner)">G</text>
 
       {/* ==================== "e" — Matte Midnight Navy ==================== */}
       {[4, 3, 2, 1].map((i) => (
-        <text key={`e${i}`} x={42 + i * 0.7} y={64 + i * 0.8}
+        <text key={`e${i}`} x={36 + i * 0.7} y={64 + i * 0.8}
           fontFamily={font} fontWeight="700" fontSize="64"
           fill={`rgba(8,14,26,${0.3 + i * 0.1})`}>e</text>
       ))}
-      <text x="42" y="64" fontFamily={font}
+      <text x="36" y="64" fontFamily={font}
         fontWeight="700" fontSize="64" fill="url(#geMain)" filter="url(#dropShadow)">e</text>
-      <text x="42" y="64" fontFamily={font}
+      <text x="36" y="64" fontFamily={font}
         fontWeight="700" fontSize="64" fill="url(#geMain)" filter="url(#geInner)">e</text>
 
       {/* ========= INFINITY KNOT "OO" — Teal, slightly larger ========= */}
