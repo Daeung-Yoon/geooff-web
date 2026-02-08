@@ -13,6 +13,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run start` — Serve production build
 - `npm run lint` — Run ESLint
 
+## Deployment
+
+- **Hosting**: Vercel (자동 배포)
+- **Domain**: geooff.ai (hostingkr 도메인 → Vercel 연동)
+- **GitHub**: Daeung-Yoon/geooff-web
+- **배포 흐름**: `main` 브랜치에 push → Vercel 자동 빌드/배포
+- **배포 명령**: `/deploy` 스킬 사용 — 커밋 + 빌드 검증 + push를 한번에 수행
+
 ## Tech Stack
 
 - **Next.js 16** (App Router, TypeScript)
